@@ -85,7 +85,7 @@ export default function Home() {
               nfts.length < 3
                 ? "md:grid-cols-auto 2xl:grid-cols-auto"
                 : "md:grid-cols-3 2xl:grid-cols-4"
-            }   pt-4 gap-10 snap-y snap-mandatory`}
+            }   pt-4 gap-10`}
           >
             {nfts.map((nft, i) => (
               <Card nft={nft} key={i} buyNft={buyNft} />
