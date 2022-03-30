@@ -5,7 +5,7 @@ export default function Footer() {
         <div className="mt-5 flex flex-col items-center">
           <div className="py-6">
             <p className="text-primary-2 mb-6 text-sm font-bold text-white">
-              © {new Date().getFullYear()} Metaverse Marketplace
+              © {new Date().getFullYear()} NFT Marketplace
             </p>
           </div>
         </div>

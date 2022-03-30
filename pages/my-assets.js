@@ -3,15 +3,15 @@ import { ethers } from "ethers";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Web3Modal from "web3modal";
+import Image from "next/image";
 
 import { nftaddress, nftmarketaddress } from "../config";
 
 import NFT from "../artifacts/contracts/NFT.sol/NFT.json";
 import Market from "../artifacts/contracts/NFTMarket.sol/NFTMarket.json";
-import Image from "next/image";
 import Card from "../components/ui/nft_card";
 
-export default function Home() {
+export default function MyAssets() {
   const [nfts, setNfts] = useState([]);
   const [loadingState, setLoadingState] = useState(true);
 
@@ -20,14 +20,18 @@ export default function Home() {
   }, [loadingState]);
 
   async function loadNFTs() {
-    const provider = new ethers.providers.JsonRpcProvider();
+    const web3Modal = new Web3Modal();
+    const connection = await web3Modal.connect();
+    const provider = new ethers.providers.Web3Provider(connection);
+    const signer = provider.getSigner();
+
     const tokenContract = new ethers.Contract(nftaddress, NFT.abi, provider);
     const marketContract = new ethers.Contract(
       nftmarketaddress,
       Market.abi,
-      provider
+      signer
     );
-    const data = await marketContract.fetchMarketItems();
+    const data = await marketContract.fetchMyNFTs();
 
     const items = await Promise.all(
       data.map(async (i) => {
@@ -51,32 +55,13 @@ export default function Home() {
     console.log(`nfts: ${nfts.length}, loading state: ${loadingState}`);
   }
 
-  async function buyNft(nft) {
-    const web3modal = new Web3Modal();
-    const connection = await web3modal.connect();
-    const provider = new ethers.providers.Web3Provider(connection);
-
-    const signer = provider.getSigner();
-    const contract = new ethers.Contract(nftmarketaddress, Market.abi, signer);
-
-    const price = ethers.utils.parseUnits(nft.price.toString(), "ether");
-
-    const transaction = await contract.createMarketSale(
-      nftaddress,
-      nft.tokenId,
-      { value: price }
-    );
-    await transaction.wait();
-    loadNFTs();
-  }
-
   return (
     <div className="flex justify-center">
       {loadingState && <p className="mb-96">Loading...</p>}
       {!nfts.length && loadingState === false ? (
-        <h1 className="px-20 py-10 text-3xl mb-80">No items in Marketplace</h1>
+        <h1 className="px-20 py-10 text-3xl mb-80">No assets owned</h1>
       ) : (
-        <div>
+        <div className="px-8">
           <div
             className={`grid grid-flow-row justify-center grid-cols-1 sm:grid-cols-2 ${
               nfts.length < 3
@@ -85,7 +70,7 @@ export default function Home() {
             }  pt-4 gap-10`}
           >
             {nfts.map((nft, i) => (
-              <Card nft={nft} key={i} buyNft={buyNft} />
+              <Card nft={nft} key={i} />
             ))}
           </div>
         </div>
@@ -94,4 +79,4 @@ export default function Home() {
   );
 }
 
-Home.Layout = Layout;
+MyAssets.Layout = Layout;
