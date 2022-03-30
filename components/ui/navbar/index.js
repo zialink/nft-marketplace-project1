@@ -61,13 +61,13 @@ export default function Navbar() {
                     My Digital Assets
                   </a>
                 </Link>
-                <li>
-                  <Link href="/my-assets">
-                    <a className="mr-4 text-indigo-500 hover:text-indigo-700">
-                      Creator Dashboard
-                    </a>
-                  </Link>
-                </li>
+              </li>
+              <li>
+                <Link href="/my-assets">
+                  <a className="mr-4 text-indigo-500 hover:text-indigo-700">
+                    Creator Dashboard
+                  </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -92,13 +92,13 @@ export default function Navbar() {
                 My Digital Assets
               </a>
             </Link>
-            <li>
-              <Link href="/my-assets">
-                <a className="mr-4 text-indigo-500 hover:text-indigo-700">
-                  Creator Dashboard
-                </a>
-              </Link>
-            </li>
+          </li>
+          <li>
+            <Link href="/my-assets">
+              <a className="mr-4 text-indigo-500 hover:text-indigo-700">
+                Creator Dashboard
+              </a>
+            </Link>
           </li>
         </ul>
       </nav>
