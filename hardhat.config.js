@@ -16,6 +16,10 @@ module.exports = {
       //url: "https://rpc-mumbai.matic.today",
       accounts: [`0x${privateKey}`],
     },
+    rinkeby: {
+      url: `https://rinkeby.infura.io/v3/${infuraId}`,
+      accounts: [`0x${privateKey}`],
+    },
     matic: {
       url: `https://polygon-mainnet.infura.io/v3/${infuraId}`,
       // url: "https://rpc-mainnet.maticvigil.com",

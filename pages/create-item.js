@@ -83,15 +83,15 @@ export default function CreateItem() {
   }
 
   return (
-    <div className="flex justify-center mb-8 z-30">
-      <div className="w-1/2 flex flex-col pb-12">
+    <div className="flex justify-center snap-y snap-mandatory mb-2 z-1">
+      <div className="w-1/2 flex flex-col pb-12 snap-center">
         <input
           placeholder="Asset Name"
           className="mt-8 border rounded p-4"
           onChange={(e) => setFormInput({ ...formInput, name: e.target.value })}
         />
         <input
-          placeholder="Asset Price in Matic"
+          placeholder="Asset Price in ETH"
           className="mt-8 border rounded p-4"
           onChange={(e) =>
             setFormInput({ ...formInput, price: e.target.value })
@@ -116,7 +116,7 @@ export default function CreateItem() {
           />
         )}
         <Button
-          className="font-bold my-4 shadow-lg"
+          className="font-bold my-4 shadow-lg mb-24 snap-center"
           onClick={createItem}
           variant="lightPurple"
         >

@@ -2,20 +2,17 @@ import Image from "next/image";
 import Link from "next/link";
 import Button from "../button";
 
-export default function Card({ nft, key, buyNft }) {
+export default function Card({ nft, buyNft }) {
   return (
-    <div
-      className="overflow-hidden rounded-xl bg-white shadow-md md:max-w-2xl"
-      key={key && key}
-    >
+    <div className="overflow-hidden rounded-xl bg-white shadow-md md:max-w-2xl snap-center mb-4">
       <div className="flex h-full">
-        <div className="next-image-wrapper h-full flex-1">
+        <div className="next-image-wrapper h-60 flex-1">
           <Image
             className="object-cover"
             src={nft.image}
-            layout="responsive"
+            layout="fixed"
             width="200"
-            height="260"
+            height="250"
             alt={nft.name}
           />
         </div>
