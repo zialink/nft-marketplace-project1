@@ -4,7 +4,7 @@ import Button from "../button";
 
 export default function Card({ nft, buyNft }) {
   return (
-    <div className="overflow-hidden rounded-xl bg-white shadow-md md:max-w-2xl mb-4">
+    <div className="overflow-hidden sm:mb-4 rounded-xl bg-white shadow-md md:max-w-2xl mb-20 span-center">
       <div className="flex h-full">
         <div className="next-image-wrapper h-60 flex-1">
           <Image

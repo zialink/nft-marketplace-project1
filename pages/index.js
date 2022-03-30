@@ -79,13 +79,13 @@ export default function Home() {
       {!nfts.length && loadingState === false ? (
         <h1 className="px-20 py-10 text-3xl mb-80">No items in Marketplace</h1>
       ) : (
-        <div className={`h-screen mb-24`}>
+        <div className={`h-screen mb-28`}>
           <div
-            className={`grid grid-flow-row justify-center grid-cols-1 sm:grid-cols-2 ${
+            className={`grid grid-flow-row justify-center items-center grid-cols-1 sm:grid-cols-2 ${
               nfts.length < 3
                 ? "md:grid-cols-auto 2xl:grid-cols-auto"
                 : "md:grid-cols-3 2xl:grid-cols-4"
-            }   pt-4 gap-10`}
+            }   pt-4 pb-10 gap-12 span-y`}
           >
             {nfts.map((nft, i) => (
               <Card nft={nft} key={i} buyNft={buyNft} />
