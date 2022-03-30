@@ -7,8 +7,8 @@ import Image from "next/image";
 
 import { nftaddress, nftmarketaddress } from "../config";
 
-import NFT from "../artifacts/contracts/NFT.sol/NFT.json";
-import Market from "../artifacts/contracts/NFTMarket.sol/NFTMarket.json";
+import NFT from "./api/NFT.json";
+import Market from "./api/NFTMarket.json";
 import Layout from "../components/ui/layout";
 import Button from "../components/ui/button";
 

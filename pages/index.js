@@ -6,8 +6,8 @@ import Web3Modal from "web3modal";
 
 import { nftaddress, nftmarketaddress } from "../config";
 
-import NFT from "../artifacts/contracts/NFT.sol/NFT.json";
-import Market from "../artifacts/contracts/NFTMarket.sol/NFTMarket.json";
+import NFT from "./api/NFT.json";
+import Market from "./api/NFTMarket.json";
 import Card from "../components/ui/nft_card";
 
 const infuraId = process.env.INFURA_ID;
