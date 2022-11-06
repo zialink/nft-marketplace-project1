@@ -10,7 +10,7 @@ import NFT from "./api/NFT.json";
 import Market from "./api/NFTMarket.json";
 import Card from "../components/ui/nft_card";
 
-const infuraId = process.env.INFURA_ID;
+const quickNode = process.env.QuickNode_ID;
 
 export default function Home() {
   const [nfts, setNfts] = useState([]);
@@ -21,9 +21,10 @@ export default function Home() {
   }, [loadingState]);
 
   async function loadNFTs() {
-    const provider = new ethers.providers.JsonRpcProvider(
-      `https://rinkeby.infura.io/v3/${infuraId}`
-    );
+    const url = `https://skilled-nameless-pallet.ethereum-goerli.discover.quiknode.pro/${quickNode}/`;
+
+    const provider = new ethers.providers.JsonRpcProvider(url);
+
     const tokenContract = new ethers.Contract(nftaddress, NFT.abi, provider);
     const marketContract = new ethers.Contract(
       nftmarketaddress,

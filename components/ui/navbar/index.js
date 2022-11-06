@@ -7,7 +7,7 @@ export default function Navbar() {
   const [isNavOpen, setIsNavOpen] = useState(false); // initiate isNavOpen state with false
 
   return (
-    <div className="flex items-center justify-between border-b border-gray-400 py-8">
+    <div className="flex items-center justify-between border-b border-gray-400 py-8 mb-5">
       <p className="text-4xl font-bold">NFT Marketplace</p>
 
       <nav>

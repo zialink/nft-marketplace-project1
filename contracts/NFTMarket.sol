@@ -11,7 +11,7 @@ contract NFTMarket is ReentrancyGuard {
     Counters.Counter private _itemsSold;
 
     address payable owner;
-    uint256 listingPrice = 0.025 ether;
+    uint256 listingPrice = 0.001 ether;
 
     constructor() {
         owner = payable(msg.sender);
@@ -48,7 +48,7 @@ contract NFTMarket is ReentrancyGuard {
         uint256 tokenId,
         uint256 price 
     ) public payable nonReentrant {
-        require(price > 20, "Price must be at least 10 matic");
+        require(price > 10, "Price must be at least 0.001 ether");
         require(msg.value == listingPrice, "Price must be equal to listing price");
 
         _itemsIds.increment();

@@ -12,7 +12,7 @@ import Market from "./api/NFTMarket.json";
 import Layout from "../components/ui/layout";
 import Button from "../components/ui/button";
 
-const client = ipfsHttpClient("https://ipfs.infura.io:5001/api/v0");
+const client = ipfsHttpClient("http://127.0.0.1:5001/");
 
 export default function CreateItem() {
   const [fileUrl, setFileUrl] = useState(null);
@@ -29,7 +29,7 @@ export default function CreateItem() {
       const added = await client.add(file, {
         progress: (prog) => console.log(`received: ${prog}`),
       });
-      const url = `https://ipfs.infura.io/ipfs/${added.path}`;
+      const url = `http://127.0.0.1:8080/ipfs/${added.path}`;
       setFileUrl(url);
     } catch (e) {
       console.log(e);
@@ -47,8 +47,7 @@ export default function CreateItem() {
 
     try {
       const added = await client.add(data);
-      const url = `https://ipfs.infura.io/ipfs/${added.path}`;
-      /* After file is uploaded to IPFS, pass the URL to save it on Polygon */
+      const url = `http://127.0.0.1:8080/ipfs/${added.path}`;
       createSale(url);
     } catch (error) {
       console.log("Error uploading file: ", error);
