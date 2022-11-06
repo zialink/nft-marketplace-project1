@@ -5,7 +5,7 @@ const nextConfig = {
 
 module.exports = {
   images: {
-    domains: ["ipfs.io"],
+    domains: ["gateway.ipfs.io"],
   },
   env: {
     QuickNode_ID: process.env.QuickNode_ID,
