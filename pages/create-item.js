@@ -12,7 +12,7 @@ import Market from "./api/NFTMarket.json";
 import Layout from "../components/ui/layout";
 import Button from "../components/ui/button";
 
-const client = ipfsHttpClient("https://gateway.ipfs.io:5001/");
+const client = ipfsHttpClient("https://ipfs.io:5001");
 //const client = ipfsHttpClient("http://127.0.0.1:5001/");
 
 export default function CreateItem() {
@@ -31,7 +31,7 @@ export default function CreateItem() {
         progress: (prog) => console.log(`received: ${prog}`),
       });
       //const url = `http://127.0.0.1:8080/ipfs/${added.path}`;
-      const url = `https://gateway.ipfs.io/ipfs/${added.path}`;
+      const url = `https://ipfs.io/ipfs/${added.path}`;
       setFileUrl(url);
     } catch (e) {
       console.log(e);
@@ -50,7 +50,7 @@ export default function CreateItem() {
     try {
       const added = await client.add(data);
       //const url = `http://127.0.0.1:8080/ipfs/${added.path}`;
-      const url = `https://gateway.ipfs.io/ipfs/${added.path}`;
+      const url = `https://ipfs.io/ipfs/${added.path}`;
       createSale(url);
     } catch (error) {
       console.log("Error uploading file: ", error);
