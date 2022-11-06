@@ -43,28 +43,40 @@ export default function Navbar() {
             <ul className="MENU-LINK-MOBILE-OPEN flex uppercase flex-col items-center justify-between min-h-[250px]">
               <li>
                 <Link href="/">
-                  <a className="mr-6 text-indigo-500 hover:text-indigo-700">
+                  <a
+                    className="mr-6 text-indigo-500 hover:text-indigo-700"
+                    onClick={() => setIsNavOpen(false)}
+                  >
                     Home
                   </a>
                 </Link>
               </li>
               <li>
                 <Link href="/create-item">
-                  <a className="mr-4 text-indigo-500 hover:text-indigo-700">
+                  <a
+                    className="mr-4 text-indigo-500 hover:text-indigo-700"
+                    onClick={() => setIsNavOpen(false)}
+                  >
                     Sell Digital Asset
                   </a>
                 </Link>
               </li>
               <li>
                 <Link href="/my-assets">
-                  <a className="mr-4 text-indigo-500 hover:text-indigo-700">
+                  <a
+                    className="mr-4 text-indigo-500 hover:text-indigo-700"
+                    onClick={() => setIsNavOpen(false)}
+                  >
                     My Digital Assets
                   </a>
                 </Link>
               </li>
               <li>
                 <Link href="/my-assets">
-                  <a className="mr-4 text-indigo-500 hover:text-indigo-700">
+                  <a
+                    className="mr-4 text-indigo-500 hover:text-indigo-700"
+                    onClick={() => setIsNavOpen(false)}
+                  >
                     Creator Dashboard
                   </a>
                 </Link>
