@@ -13,7 +13,7 @@ import Layout from "../components/ui/layout";
 import Button from "../components/ui/button";
 
 //const client = ipfsHttpClient("http://127.0.0.1:5001/");
-const client = ipfsHttpClient("https://ipfs.io/");
+const client = ipfsHttpClient("https://ipfs.io:5001/");
 export default function CreateItem() {
   const [fileUrl, setFileUrl] = useState(null);
   const [formInput, setFormInput] = useState({
