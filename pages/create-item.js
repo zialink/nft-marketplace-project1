@@ -30,8 +30,7 @@ export default function CreateItem() {
       const added = await client.add(file, {
         progress: (prog) => console.log(`received: ${prog}`),
       });
-      const url = `https://cloudflare-ipfs.com/ipfs/${added.path}`;
-      // const url = `http://127.0.0.1:8080/ipfs/${added.path}`;
+      const url = `http://127.0.0.1:8080/ipfs/${added.path}`;
       setFileUrl(url);
     } catch (e) {
       console.log(e);
@@ -49,8 +48,7 @@ export default function CreateItem() {
 
     try {
       const added = await client.add(data);
-      const url = `https://cloudflare-ipfs.com/ipfs/${added.path}`;
-      //const url = `http://127.0.0.1:8080/ipfs/${added.path}`;
+      const url = `http://127.0.0.1:8080/ipfs/${added.path}`;
       createSale(url);
     } catch (error) {
       console.log("Error uploading file: ", error);
