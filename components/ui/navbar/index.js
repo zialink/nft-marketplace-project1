@@ -8,7 +8,13 @@ export default function Navbar() {
 
   return (
     <div className="flex items-center justify-between border-b border-gray-400 py-8 mb-5">
-      <p className="text-4xl font-bold">NFT Marketplace</p>
+      <p className="text-4xl font-bold">
+        <Link href="/">
+          <a className="mr-6 text-indigo-500 hover:text-indigo-700">
+            NFT Marketplace
+          </a>
+        </Link>
+      </p>
 
       <nav>
         <section className="MOBILE-MENU flex lg:hidden">
