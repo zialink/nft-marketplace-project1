@@ -12,7 +12,21 @@ import Market from "./api/NFTMarket.json";
 import Layout from "../components/ui/layout";
 import Button from "../components/ui/button";
 
-const client = ipfsHttpClient("https://ipfs.io:5001");
+const auth =
+  "Basic " +
+  Buffer.from(
+    `${process.env.project_id}:${process.env.project_secret}`
+  ).toString("base64");
+
+const client = ipfsHttpClient({
+  host: `${process.env.ipfs_url}`,
+  port: 5001,
+  protocol: "https",
+  apiPath: "/api/v0",
+  headers: {
+    authorization: auth,
+  },
+});
 //const client = ipfsHttpClient("http://127.0.0.1:5001/");
 
 export default function CreateItem() {
@@ -31,7 +45,7 @@ export default function CreateItem() {
         progress: (prog) => console.log(`received: ${prog}`),
       });
       //const url = `http://127.0.0.1:8080/ipfs/${added.path}`;
-      const url = `https://ipfs.io/ipfs/${added.path}`;
+      const url = `https://zianft.${process.env.ipfs_subdomain}/ipfs/${added.path}`;
       setFileUrl(url);
     } catch (e) {
       console.log(e);
@@ -50,7 +64,7 @@ export default function CreateItem() {
     try {
       const added = await client.add(data);
       //const url = `http://127.0.0.1:8080/ipfs/${added.path}`;
-      const url = `https://ipfs.io/ipfs/${added.path}`;
+      const url = `https://zianft.${process.env.ipfs_subdomain}/ipfs/${added.path}`;
       createSale(url);
     } catch (error) {
       console.log("Error uploading file: ", error);
