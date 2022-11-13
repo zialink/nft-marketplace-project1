@@ -11,6 +11,8 @@ import Market from "./api/NFTMarket.json";
 import Card from "../components/ui/nft_card";
 
 //const quickNode = process.env.QuickNode_ID;
+const url =
+  "https://skilled-nameless-pallet.ethereum-goerli.discover.quiknode.pro/33c3e61d45a79913e7352973839aaff1d5583db2/";
 
 export default function Home() {
   const [nfts, setNfts] = useState([]);
@@ -21,9 +23,6 @@ export default function Home() {
   }, [loadingState]);
 
   async function loadNFTs() {
-    const url =
-      "https://skilled-nameless-pallet.ethereum-goerli.discover.quiknode.pro/33c3e61d45a79913e7352973839aaff1d5583db2/";
-
     const provider = new ethers.providers.JsonRpcProvider(url);
 
     const tokenContract = new ethers.Contract(nftaddress, NFT.abi, provider);
@@ -57,7 +56,15 @@ export default function Home() {
   }
 
   async function buyNft(nft) {
-    const web3modal = new Web3Modal();
+    const providerOptions = {
+      walletconnect: {
+        package: WalletConnect,
+        options: {
+          rpc: { url },
+        },
+      },
+    };
+    const web3modal = new Web3Modal({ cacheProvider: true, providerOptions });
     const connection = await web3modal.connect();
     const provider = new ethers.providers.Web3Provider(connection);
 
